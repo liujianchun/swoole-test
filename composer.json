@@ -1,0 +1,11 @@
+{
+  "name": "simple/swoole-test",
+  "keywords": [
+    "php",
+    "swoole"
+  ],
+  "description": "swoole test project",
+  "require-dev": {
+    "swoole/ide-helper": "^4.5"
+  }
+}
