@@ -7,5 +7,8 @@
   "description": "swoole test project",
   "require-dev": {
     "swoole/ide-helper": "^4.5"
+  },
+  "require": {
+    "ext-json": "*"
   }
 }

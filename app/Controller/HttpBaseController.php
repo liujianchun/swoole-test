@@ -2,6 +2,7 @@
 
 use Swoole\Http\Request;
 use Swoole\Http\Response;
+use Swoole\Http\Server;
 
 abstract class HttpBaseController {
   /**
@@ -14,11 +15,17 @@ abstract class HttpBaseController {
    */
   protected $response;
 
-  public function __construct($request, $response)
+  /**
+   * @var Server
+   */
+  protected $server;
+
+  public function __construct($request, $response, $server)
   {
     $this->request = $request;
     $response->header('Content-Type', 'application/json; charset=utf-8');
     $this->response = $response;
+    $this->server = $server;
   }
 
   public function writeJsonResponse($data)

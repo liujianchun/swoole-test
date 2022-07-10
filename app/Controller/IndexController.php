@@ -1,5 +1,6 @@
 <?php
 
+use app\Task\LogTask;
 class IndexController extends HttpBaseController {
   public function index()
   {
@@ -11,6 +12,8 @@ class IndexController extends HttpBaseController {
         'query' => $this->request->get
       ]
     ];
+    $log_task = new LogTask($this->request->get);
+    $this->server->task($log_task);
     $this->writeJsonResponse($data);
   }
 }
