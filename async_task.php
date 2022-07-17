@@ -1,5 +1,5 @@
 <?php
-$serv = new Swoole\Server('0.0.0.0', 9503);
+$serv = new Swoole\Server('0.0.0.0', 1003);
 
 //设置异步任务的工作进程数量
 $serv->set([

@@ -5,7 +5,7 @@ ini_set('display_startup_errors', 'on');
 
 !defined('BASE_PATH') && define('BASE_PATH', __DIR__);
 ini_set('date.timezone','Asia/Shanghai'); // 时间默认东8区
-$http = new Swoole\Http\Server('0.0.0.0', 9501);
+$http = new Swoole\Http\Server('0.0.0.0', 1001);
 
 //设置异步任务的工作进程数量
 $http->set([
