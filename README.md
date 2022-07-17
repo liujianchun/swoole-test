@@ -1,4 +1,4 @@
-# swoole测试项目
+# swoole 自建简易小框架
 
 ```
 1.项目拉下后先 composer install 没有引入任何组件，纯粹是为了swoole ide自动提示；
@@ -7,4 +7,14 @@
 telnet 127.0.0.1 9501
 hello
 Server: hello
+```
+
+```
+TODO
+1.API协程接入 详情问题查看 app\Task\LogTask line 46
+2.mysql协程客户端接入、封装
+3.redis协程客户端接入、封装
+4.command migrate
+5.配置中心
+6.整合一个简易框架
 ```

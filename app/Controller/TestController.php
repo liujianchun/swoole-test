@@ -1,16 +1,17 @@
 <?php
 
-class IndexController extends HttpBaseController {
-  public function index()
+class TestController extends HttpBaseController {
+
+  public function swoole()
   {
     $data = [
       'status' => 'success',
       'timestamp' => time(),
       'data' => [
-        'region' => 'sh',
-        'query' => $this->request->get
+        'php' => 'swoole',
       ]
     ];
     $this->writeJsonResponse($data);
   }
+
 }

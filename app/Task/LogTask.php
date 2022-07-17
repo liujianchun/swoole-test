@@ -3,10 +3,25 @@
 namespace app\Task;
 
 class LogTask extends TaskBase {
+
   public function handler()
   {
-    $log_line = json_encode($this->data) . "\n";
+    $log_line = date('Y-m-d H:i:s');
+    foreach($this->data as $item) {
+      if (is_array($item)) {
+        $log_line .= "\t" . json_encode($item);
+      } else if (is_null($item)) {
+        $log_line .= "\t{}";
+      } else {
+        $log_line .= "\t" . $item;
+      }
+    }
+    $log_line .= "\n";
     self::writeFile($this->getLogFilePath(), $log_line, FILE_APPEND);
+  }
+
+  public function finish() {
+    // TODO 异步任务执行结束后可处理相关逻辑
   }
 
   /**
@@ -28,6 +43,7 @@ class LogTask extends TaskBase {
         @mkdir($folder_path, 0777, true);
       }
     }
+    // return \Swoole\Coroutine::writeFile($filename, $data, $flags); // TODO API must be called in the coroutine
     return file_put_contents($filename, $data, $flags);
   }
 
