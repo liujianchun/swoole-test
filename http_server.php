@@ -28,6 +28,7 @@ $http->on('Request', function (\Swoole\Http\Request $request, \Swoole\Http\Respo
   else $controller .= 'Controller'; // 拼接上Controller后缀名
   if(empty($action)) $action = 'index';
   // 根据 $controller, $action 映射到不同的控制器类和方法
+  // TODO MAC环境下大小写不敏感，Linux系统上大小写敏感，需要增加兼容
   (new $controller($request, $response, $http))->$action();
 });
 
