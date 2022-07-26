@@ -5,7 +5,10 @@ ini_set('display_startup_errors', 'on');
 
 !defined('BASE_PATH') && define('BASE_PATH', __DIR__);
 ini_set('date.timezone','Asia/Shanghai'); // 时间默认东8区
-$http = new Swoole\Http\Server('0.0.0.0', 1001);
+
+// 使用 1001 端口时，Fatal error: Uncaught Swoole\Exception: failed to listen server port[0.0.0.0:1001], Error: Permission denied[13]
+// 因为 Linux 和 Mac 中，1024 及以下端口只有超级管理员有使用权限，因此可将端口改为 9501 即可（ host 默认是 127.0.0.1 ，代表监听本地地址，这里顺便更改为 0.0.0.0 ，表示监听所有地址）。
+$http = new Swoole\Http\Server('0.0.0.0', 9501);
 
 //设置异步任务的工作进程数量
 $http->set([
